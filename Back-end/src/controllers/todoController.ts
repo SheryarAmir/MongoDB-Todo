@@ -64,7 +64,7 @@ export async function updateTodo(request: Request<TodoParams, {}, UpdateTodoBody
 // Delete a todo
 export async function deleteTodo(request: Request<TodoParams>, response: Response) {
   try {
-    const { id } = request.body;
+    const { id } = request.params;
     
     const todo = await Todo.findByIdAndDelete(id);
     
@@ -80,7 +80,7 @@ export async function deleteTodo(request: Request<TodoParams>, response: Respons
 // Mark todo as complete
 export async function completeTodo(request: Request<TodoParams>, response: Response) {
   try {
-    const { id } = request.body;
+    const { id } = request.params;
     const todo = await Todo.findById(id);
 
     // console.log(request)
