@@ -42,7 +42,7 @@ export default function Home() {
       })
         .then((response) => response.json())
         .then((todo) => {
-          setAllTodos((prevTodos) => [...prevTodos, todo]);
+          setAllTodos((prevTodos:any) => [...prevTodos, todo]);
           setInput("");
         })
         .catch((error) => {
@@ -66,7 +66,7 @@ export default function Home() {
   
 
   function HandlerToggle(id: string) {
-    fetch(`http://localhost:4000/todos/${id}`, {
+    fetch(`http://localhost:4000/todos/${id}/complete`, {
       method: "PATCH",
       headers: {
         "Content-Type": "application/json",
@@ -77,6 +77,7 @@ export default function Home() {
       .then((responce) => responce.json())
       .then((todo) => {
         console.log(todo.isComplete)
+        console.log(todo)
         const updatedTodos = allTodos.map((todo: any) => {
           if (todo._id === id) {
             return { ...todo, isComplete: !todo.isComplete };
@@ -138,16 +139,14 @@ export default function Home() {
       <div>
         <ul className="space-y-2">
           {allTodos &&
-            allTodos.map((item) => {
+            allTodos.map((item : any) => {
               return (
                 <div
                   key={item._id}
                   className="flex items-center justify-between p-2 border border-gray-300 rounded"
                 >
                   <li
-                    className={`flex-1 ${
-                      item.isComplete ? "line-through text-gray-500" : ""
-                    }`}
+                    className={item.isComplete ? "line-through text-gray-500" : "text-black"}
                   >
                     {item.value}
                   </li>
