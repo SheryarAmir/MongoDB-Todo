@@ -10,6 +10,7 @@ export default function Home() {
   async function fetchTodo() {
     const response = await fetch("http://localhost:4000/todos");
     const result = await response.json();
+   
     setAllTodos([...result]);
   }
 
