@@ -3,9 +3,9 @@
 import { useState } from "react";
 
 export default function Home() {
-  const [input, setInput] = useState<any>("");
-  const [allTodos, setAllTodos] = useState<any>([]);
-  const [editingId, setEditingId] = useState<any>(null);
+  // const [input, setInput] = useState<any>("");
+  // const [allTodos, setAllTodos] = useState<any>([]);
+  // const [editingId, setEditingId] = useState<any>(null);
 
   async function fetchTodo() {
     const response = await fetch("http://localhost:4000/todos");
